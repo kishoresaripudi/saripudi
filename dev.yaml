@@ -13,7 +13,7 @@
    - name: start the container
      docker_container:
        name: myapp
-       image: "kishore56/myapp:"{{DOCKER_TAG}}
+       image: "kishore56/myapp:"{{DOCKER_TAG}}"
        with_items:"{{DOCKER_TAG}}"
        state: started
        published_ports:
