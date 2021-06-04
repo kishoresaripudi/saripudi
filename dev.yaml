@@ -16,9 +16,9 @@
        state: present
    - name: start the service
      service:
-     name: docker service
-     state: started
-     enabled: yes
+       name: docker service
+       state: started
+       enabled: yes
    - name: start the container
      docker_container:
        name: myapp
