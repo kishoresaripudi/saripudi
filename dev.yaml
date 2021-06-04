@@ -1,5 +1,5 @@
 ---
-- hosts: dev
+- hosts: all
   become: true
   tasks:
    - name: install python pip
@@ -10,11 +10,20 @@
      pip:
        name: docker-py
        state: present
+   - name: install docker
+     yum:
+       name: docker
+       state: present
+   - name: start the service
+     service:
+     name: docker service
+     state: started
+     enabled: yes
    - name: start the container
      docker_container:
        name: myapp
        image: "kishore56/myapp"
-       with_items:"{{DOCKER_TAG}}"
+       with_items: "{{DOCKER_TAG}}"
        state: started
        published_ports:
         -0.0.0.0:8080:8080
